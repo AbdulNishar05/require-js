@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title> Form</title>
+</head>
+<link rel="stylesheet" href="order.css">
+
+<body>
+    <h1 align='center'>Shopping List</h1>
+    <table id="table1">
+        <thead>
+            <tr>
+                <th style="width: 70px;">ID</th>
+                <th style="width: 180px;">Product Name</th>
+                <th style="width: 80px;">Category</th>
+                <th style="width: 60px;">Quantity</th>
+                <th style="width: 150px;">Availablity</th>
+                <th style="width: 165px;">Discounts</th>
+            </tr>
+        </thead>
+    </table>
+
+    <table width='100%'>
+        <tbody data-bind="foreach:row">
+            <tr>
+                <td>
+                    <input type="number" min="1" max="10" data-bind="value:id" placeholder="Prod id" />
+                    <input type="text" data-bind="value:name" placeholder="Product name" />
+                    <select data-bind="options:$parent.component ,optionsText:'options1',optionsValue:'options1',optionsCaption: 'Choose',value:selected "></select>
+                    <input type="number" min="1" max="10" data-bind="value:quantity " placeholder="Quantity" />
+                    <label><input type="radio" attr : {name: id} value="Yes"data-bind="checked: radiovalue" />Yes</label>
+                    <label><input type="radio" attr : {name: id} value="No" data-bind="checked: radiovalue" />No</label>
+                    <label><input type="checkbox" value="HDFC" data-bind="checked: checkedValue" /> HDFC</label>
+                    <label><input type="checkbox" value="SBI" data-bind="checked: checkedValue" /> SBI</label>
+                    <label><input type="checkbox" value="MASTER CARD" data-bind="checked: checkedValue" />MASTERCARD</label>
+                    <button data-bind="click:$parent.remove">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="margin-left: 150px;"> <button style="margin-left: 120px;" data-bind="click:add">Add</button>
+        <button data-bind="click:join">Submit</button>
+        <button data-bind="click:clear">Reset</button>
+
+        <table id='table' border='1'>
+            <thead id="body1">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Availablity</th>
+                    <th>Discount</th>
+
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: data1">
+                <tr>
+                    <td data-bind="text:id"></td>
+                    <td data-bind="text:name"></td>
+                    <td data-bind="text:selected"></td>
+                    <td data-bind="text:quantity"></td>
+                    <td data-bind="text:radiovalue"></td>
+                    <td data-bind="text:checkedValue"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <script data-main="script/config.js" src="script/require.js"></script>
+        <script>
+            require(['order']);
+        </script>
+ <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+    <script src="order.js"></script>-->
+</body>
+
+</html>
